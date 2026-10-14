@@ -2,6 +2,8 @@ namespace Domain.Models;
 
 public class Product
 {
+    public const int MaxNameLength = 20;
+
     private Product() { }
 
     private Product(int id, string name, bool isBought)
@@ -15,8 +17,11 @@ public class Product
     public string Name { get; private set; } = string.Empty;
     public bool IsBought { get; private set; }
 
-    public static Product Create(int id, string name, bool isBought = false)
+    public static (Product? product, string error) Create(int id, string name, bool isBought = false)
     {
-        return new Product(id, name, isBought);
+        if (string.IsNullOrEmpty(name) || name.Length > MaxNameLength)
+            return (null, "Name cannot be empty or exceed 20 characters");
+
+        return (new Product(id, name, isBought), string.Empty);
     }
 }
