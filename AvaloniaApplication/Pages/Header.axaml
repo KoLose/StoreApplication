@@ -5,5 +5,11 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="AvaloniaApplication.Pages.Header"
              Background="#FFD166">
-
+    <StackPanel Orientation="Horizontal" Spacing="30" Margin="20">
+        <TextBox x:Name="ProductNameInput" 
+                 Width="200" 
+                 Height="60"
+                 Watermark="Название товара..." />
+        <Button x:Name="AddButton" Click="OnAddClick" Content="Добавить" Foreground="Black"/>
+    </StackPanel>
 </UserControl>

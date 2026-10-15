@@ -6,4 +6,8 @@
         x:Class="AvaloniaApplication.MainWindow"
         Title="AvaloniaApplication"
         Background="#7366BD">
+        <Grid RowDefinitions="100">
+                <ContentControl Grid.Row="0" x:Name="HeaderContent"/>
+                <ContentControl Grid.Row="1" x:Name="MainContent"/>
+        </Grid>
 </Window>
