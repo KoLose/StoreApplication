@@ -1,10 +1,11 @@
+using Domain.IRepository;
 using Domain.Models;
 using Infastructure.DbContext;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infastructure.Repositories;
 
-public class ProductRepository
+public class ProductRepository: IProductRepository
 {
     private readonly ContextDb _context;
 
