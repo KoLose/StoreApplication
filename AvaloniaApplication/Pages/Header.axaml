@@ -7,9 +7,9 @@
              Background="#FFD166">
     <StackPanel Orientation="Horizontal" Spacing="30" Margin="20">
         <TextBox x:Name="ProductNameInput" 
-                 Width="200" 
+                 Width="250" 
                  Height="60"
                  Watermark="Название товара..." />
-        <Button x:Name="AddButton" Click="OnAddClick" Content="Добавить" Foreground="Black"/>
+        <Button x:Name="AddButton" Click="OnAddClick" Content="Добавить новый товар" Foreground="Black"/>
     </StackPanel>
 </UserControl>
