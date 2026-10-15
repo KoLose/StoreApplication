@@ -28,4 +28,8 @@ public partial class Header : UserControl
         await repository.CreateProductAsync(result.product);
         ProductNameInput.Clear();
     }
+
+    private void GetButton_OnClick(object? sender, RoutedEventArgs e)
+    {
+    }
 }
