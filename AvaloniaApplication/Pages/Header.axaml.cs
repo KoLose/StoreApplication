@@ -1,9 +1,9 @@
-using System.Threading.Tasks;
-using Avalonia;
+using System;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
 using Domain.Models;
+using Infastructure.DbContext;
+using Infastructure.Repositories;
 
 namespace AvaloniaApplication.Pages;
 
@@ -13,11 +13,19 @@ public partial class Header : UserControl
     {
         InitializeComponent();
     }
-
-    private void OnAddClick(object? sender, RoutedEventArgs e)
+    
+    private async void OnAddClick(object? sender, RoutedEventArgs e)
     {
+        var repository = new ProductRepository(new ContextDb());
         var result = Product.Create(ProductNameInput.Text);
         
+        if (result.product is null)
+        {
+            Console.WriteLine(result.error);
+            return;
+        }
+        
+        await repository.CreateProductAsync(result.product);
         ProductNameInput.Clear();
     }
 }
