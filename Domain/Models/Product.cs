@@ -6,9 +6,8 @@ public class Product
 
     private Product() { }
 
-    private Product(int id, string name, bool isBought)
+    private Product(string name, bool isBought)
     {
-        Id = id;
         Name = name;
         IsBought = isBought;
     }
@@ -17,11 +16,11 @@ public class Product
     public string Name { get; private set; } = string.Empty;
     public bool IsBought { get; private set; }
 
-    public static (Product? product, string error) Create(int id, string name, bool isBought = false)
+    public static (Product? product, string error) Create(string name, bool isBought = false)
     {
         if (string.IsNullOrEmpty(name) || name.Length > MaxNameLength)
             return (null, "Name cannot be empty or exceed 20 characters");
 
-        return (new Product(id, name, isBought), string.Empty);
+        return (new Product(name, isBought), string.Empty);
     }
 }
