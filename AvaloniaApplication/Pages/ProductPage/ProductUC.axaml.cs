@@ -22,8 +22,23 @@ public partial class ProductUC : UserControl
         throw new System.NotImplementedException();
     }
 
-    private void LoadData()
+    public void LoadData()
     {
         ItemsGrid.ItemsSource = App.DbContext.Products.ToList();
+    }
+
+    public void FilterData(string searchText)
+    {
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            LoadData();
+            return;
+        }
+
+        var filtered = App.DbContext.Products
+            .Where(p => p.Name.ToLower().Contains(searchText.ToLower()))
+            .ToList();
+
+        ItemsGrid.ItemsSource = filtered;
     }
 }

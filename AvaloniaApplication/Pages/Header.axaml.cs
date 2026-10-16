@@ -13,23 +13,37 @@ public partial class Header : UserControl
     {
         InitializeComponent();
     }
-    
+
     private async void OnAddClick(object? sender, RoutedEventArgs e)
     {
         var repository = new ProductRepository(new ContextDb());
         var result = Product.Create(ProductNameInput.Text);
-        
+
         if (result.product is null)
         {
             Console.WriteLine(result.error);
             return;
         }
-        
+
         await repository.CreateProductAsync(result.product);
         ProductNameInput.Clear();
+
+        if (this.Parent is MainWindow mainWindow)
+        {
+            mainWindow.RefreshProductList();
+        }
+    }
+
+    private void OnSearchClick(object? sender, RoutedEventArgs e)
+    {
+        if (this.VisualRoot is MainWindow mainWindow)
+        {
+            mainWindow.ApplySearchFilter(ProductNameInput.Text ?? string.Empty);
+        }
     }
 
     private void GetButton_OnClick(object? sender, RoutedEventArgs e)
     {
+
     }
 }
