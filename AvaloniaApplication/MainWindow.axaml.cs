@@ -4,7 +4,7 @@ namespace AvaloniaApplication;
 
 public partial class MainWindow : Window
 {
-    private ProductPage.ProductUC _productPage;
+    private Pages.ProductPage.ProductUC _productPage;
 
     public MainWindow()
     {
