@@ -1,6 +1,8 @@
 using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Domain.Models;
+using Infastructure.Repositories;
 
 namespace AvaloniaApplication.Pages.ProductPage;
 
@@ -20,6 +22,14 @@ public partial class ProductUC : UserControl
     private void AddToList_Click(object? sender, RoutedEventArgs e)
     {
         throw new System.NotImplementedException();
+    }
+
+    private async void OnBoughtClick(object? sender, RoutedEventArgs e)
+    {
+        if (sender is not CheckBox { DataContext: Product product })
+            return;
+
+        await new ProductRepository(App.DbContext).UpdateProductAsync(product);
     }
 
     private void LoadData()
