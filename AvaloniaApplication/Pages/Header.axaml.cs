@@ -28,9 +28,9 @@ public partial class Header : UserControl
         await repository.CreateProductAsync(result.product);
         ProductNameInput.Clear();
 
-        if (this.Parent is MainWindow mainWindow)
+        if (this.VisualRoot is MainWindow mainWindow)
         {
-            mainWindow.RefreshProductList();
+            await mainWindow.RefreshProductListAsync();
         }
     }
 

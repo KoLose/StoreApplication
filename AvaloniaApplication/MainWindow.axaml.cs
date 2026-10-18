@@ -1,10 +1,11 @@
+using System.Threading.Tasks;
 using Avalonia.Controls;
 
 namespace AvaloniaApplication;
 
 public partial class MainWindow : Window
 {
-    private Pages.ProductPage.ProductUC _productPage;
+    private readonly Pages.ProductPage.ProductUC _productPage;
 
     public MainWindow()
     {
@@ -21,8 +22,8 @@ public partial class MainWindow : Window
         _productPage.FilterData(searchText);
     }
 
-    public void RefreshProductList()
+    public Task RefreshProductListAsync()
     {
-        _productPage.LoadData();
+        return _productPage.LoadDataAsync();
     }
 }

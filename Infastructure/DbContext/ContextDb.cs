@@ -5,7 +5,7 @@ namespace Infastructure.DbContext;
 
 public class ContextDb : Microsoft.EntityFrameworkCore.DbContext
 {
-    private const string ConnectionString = "Host=localhost;Port=5432;Database=StoreApplication;Username=kolose;Password=123098";
+    private const string ConnectionString = "Host=localhost;Port=5432;Database=StoreApplication;Username=user;Password=dassha98712345";
 
     public ContextDb() : base(new DbContextOptionsBuilder<ContextDb>().UseNpgsql(ConnectionString).Options) { }
 
