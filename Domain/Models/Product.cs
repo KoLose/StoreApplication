@@ -14,7 +14,7 @@ public class Product
 
     public int Id { get; private set; }
     public string Name { get; private set; } = string.Empty;
-    public bool IsBought { get; private set; }
+    public bool IsBought { get; set; }
 
     public static (Product? product, string error) Create(string name, bool isBought = false)
     {
